@@ -1,59 +1,49 @@
-(function(){
-	'use strict';
-	
-	angular.module(APPNAME)
-		.component('editHours', {
-			templateUrl: '../Scripts/components/edit-hours/_main.html',
-			controller: 'hoursController',
-			controllerAs: 'vm'
-		});
+(function () {
+    'use strict';
 
-	angular.module(APPNAME)
-		.controller('hoursController', hoursController);
+    angular.module(APPNAME)
+        .component('editHours', {
+            templateUrl: '../Scripts/components/edit-hours/_main.html',
+            controller: 'hoursController',
+            controllerAs: 'vm'
+        });
 
-	hoursController.$inject = ['hoursService'];
+    angular.module(APPNAME)
+        .controller('hoursController', hoursController);
 
-	function hoursController(hoursService) {
-		var vm = this;
+    hoursController.$inject = ['hoursService'];
 
-		// data from hours input form
-		vm.form = {
-			week: null,
-			date: null,
-			total: null,
-			direct: null,
-			indirect: null,
-			supervision: null
-		};
+    function hoursController(hoursService) {
+        var vm = this;
 
-		// array of entries
-		vm.table = hoursService.table;
+        // data from input form
+        vm.form = {
+            id: null,
+            week: null,
+            date: null,
+            totalHoursWorked: null,
+            directClientContact: null,
+            indirectClientHours: null,
+            supervisionHours: null,
+            explanationOfSce: null
+        };
+        vm.hoursArray = hoursService.hoursArray; // data from server
+        vm.getAll = _getAll;
+        vm.$onInit = _getAll();
+        vm.clearForm = _clearForm;
 
-		vm.addRow = _addRow;
-		vm.clearForm = _clearForm;
-		vm.editEntry = _editEntry;
-		vm.deleteEntry = _deleteEntry;
+        function _getAll() {
+            hoursService.getAll()
+                .then(response => vm.hoursArray = response.data, error => console.error(error));
+        }
 
-		function _addRow() {
-			var data = angular.copy(vm.form);
-			hoursService.addRow(data);
-			_clearForm();
-		}
+        function _create() {
+            hoursService.create(vm.form);
+        }
 
-		function _clearForm() {
-			vm.form = null;
-		}
+        function _clearForm() {
+            vm.form = null;
+        }
 
-		function _editEntry(entry) {
-			vm.form = entry;
-		}
-
-		function _deleteEntry(entryIndex, $event) {
-			$event.stopPropagation();
-			if(window.confirm('Are you sure you want to delete this entry?')){
-				hoursService.removeRow(entryIndex);
-			}
-		}
-
-	}
+    }
 })();

@@ -12,12 +12,12 @@ namespace JusticeHours.Services
     {
         public int Create(HoursCreateRequest request)
         {
-
+            return 0;
         }
 
         public List<Hours> GetAll()
         {
-            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=hours; integrated security=SSPI"))
+            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
             {
                 con.Open();
 
@@ -39,7 +39,11 @@ namespace JusticeHours.Services
                         result.DirectClientContact = reader.GetInt32(4);
                         result.IndirectClientHours = reader.GetInt32(5);
                         result.SupervisionHours = reader.GetInt32(6);
-                        result.ExplanationOfSce = reader.GetString(7);
+                        // handle null entries
+                        if(!reader.IsDBNull(7))
+                        {
+                            result.ExplanationOfSce = reader.GetString(7);
+                        }
 
                         // add that Hours object to the list
                         results.Add(result);
@@ -52,17 +56,17 @@ namespace JusticeHours.Services
 
         public Hours GetById(int id)
         {
-
+            return null;
         }
 
         public int Update(HoursUpdateRequest request)
         {
-
+            return 0;
         }
 
         public int Delete(int id)
         {
-
+            return 0;
         }
     }
 }

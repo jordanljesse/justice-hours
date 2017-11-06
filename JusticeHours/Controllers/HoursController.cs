@@ -12,11 +12,13 @@ namespace JusticeHours.Controllers
     [RoutePrefix("api/hours")]
     public class HoursController : ApiController
     {
-        [HttpGet ]
-        public List<Hours> GetAllHours()
+        [HttpGet]
+        public List<Hours> GetAll()
         {
             HoursService hoursService = new HoursService();
-            return hoursService.GetAllHours();
+            return hoursService.GetAll();
         }
+
+        
     }
 }
