@@ -3,7 +3,7 @@
 
 	angular.module(APPNAME)
 		.component('userLogin',{
-			templateUrl: 'scripts/components/user-login/_main.html',
+			templateUrl: 'Scripts/components/user-login/_main.html',
 			controller: 'userLoginController',
 			controllerAs: 'vm'
 		});
