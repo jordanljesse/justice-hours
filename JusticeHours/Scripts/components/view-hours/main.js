@@ -2,39 +2,55 @@
 	'use strict';
 
 	angular.module(APPNAME)
-		.component('userLogin',{
-			templateUrl: 'Scripts/components/user-login/_main.html',
-			controller: 'userLoginController',
+		.component('viewHours', {
+			templateUrl: '../Scripts/components/view-hours/_main.html',
+			controller: 'viewController',
 			controllerAs: 'vm'
 		});
 
 	angular.module(APPNAME)
-		.controller('userLoginController', userLoginController);
+		.controller('viewController', viewController);
 
-	userLoginController.$inject = [];
+	viewController.$inject = ['hoursService'];
 
-	function userLoginController() {
+	function viewController(hoursService) {
 		var vm = this;
 
-		// track when to show registration form
-		vm.registerMode = false;
-
-		vm.loginForm = {
-			login: null,
-			password: null
-		};	
-
-		vm.registerForm = {
-			fullName: null,
-			userName: null,
-			email: null,
-			password: null
+		// store the hours entries
+		vm.table = hoursService.table;
+		
+		// hold all the calculations performed on entries in the table
+		vm.hours = {
+			total: null,
+			direct: null,
+			indirect: null,
+			supervision: null
 		};
 
-		vm.toggleRegister = _toggleRegister;
+		vm.getTotalHours = _getTotalHours;
+		vm.getSupervisionTotal = _getSupervisionTotal;
+		vm.getDirectTotal = _getDirectTotal;
+		vm.getIndirectTotal = _getIndirectTotal;
+		vm.$onInit = _getTotalHours();
+		vm.$onInit = _getSupervisionTotal();
+		vm.$onInit = _getDirectTotal();
+		vm.$onInit = _getIndirectTotal();
 
-		function _toggleRegister() {
-			vm.registerMode = !vm.registerMode;
+		function _getTotalHours() {
+			vm.hours.total = hoursService.getTotalHours();
 		}
+
+		function _getSupervisionTotal() {
+			vm.hours.supervision = hoursService.getSupervisionTotal();
+		}
+		
+		function _getDirectTotal() {
+			vm.hours.direct = hoursService.getDirectTotal();
+		}
+
+		function _getIndirectTotal() {
+			vm.hours.indirect = hoursService.getIndirectTotal();
+		}
+
 	}
 })();

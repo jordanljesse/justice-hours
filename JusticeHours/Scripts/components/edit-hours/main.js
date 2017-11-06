@@ -3,7 +3,7 @@
 	
 	angular.module(APPNAME)
 		.component('editHours', {
-			templateUrl: 'Scripts/components/edit-hours/_main.html',
+			templateUrl: '../Scripts/components/edit-hours/_main.html',
 			controller: 'hoursController',
 			controllerAs: 'vm'
 		});
