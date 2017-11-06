@@ -185,6 +185,8 @@
     </Compile>
     <Compile Include="Interfaces\IHoursService.cs" />
     <Compile Include="Models\Hours.cs" />
+    <Compile Include="Models\HoursCreateRequest.cs" />
+    <Compile Include="Models\HoursUpdateRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HoursService.cs" />
   </ItemGroup>
