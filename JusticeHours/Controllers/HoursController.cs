@@ -15,9 +15,9 @@ namespace JusticeHours.Controllers
     {
         readonly IHoursService hoursService;
 
-        public HoursController(IHoursService hoursService)
+        public HoursController()
         {
-            this.hoursService = hoursService;
+            this.hoursService = new HoursService();
         }
 
         [HttpGet]
