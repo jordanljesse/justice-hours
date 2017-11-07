@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace JusticeHours.Controllers
 {
     [RoutePrefix("api/hours")]
+    [AllowAnonymous] // does not require a valid cookie
     public class HoursController : ApiController
     {
         readonly IHoursService hoursService;
@@ -18,12 +19,6 @@ namespace JusticeHours.Controllers
         public HoursController()
         {
             this.hoursService = new HoursService();
-        }
-
-        [HttpGet]
-        public List<Hours> GetAll()
-        {
-            return hoursService.GetAll();
         }
 
         [HttpPost]
@@ -42,5 +37,18 @@ namespace JusticeHours.Controllers
             int response = hoursService.Create(request);
             return Request.CreateResponse(HttpStatusCode.Created, response);
         }
+
+        [HttpGet]
+        public List<Hours> GetAll()
+        {
+            return hoursService.GetAll();
+        }
+
+        [HttpGet, Route("{id:int}")]
+        public Hours GetById(int id)
+        {
+            return hoursService.GetById(id);
+        }
+
     }
 }

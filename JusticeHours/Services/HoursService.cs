@@ -54,6 +54,7 @@ namespace JusticeHours.Services
 
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandText = "hours_getall";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -71,15 +72,17 @@ namespace JusticeHours.Services
                         result.IndirectClientHours = reader.GetInt32(5);
                         result.SupervisionHours = reader.GetInt32(6);
                         // handle null entries
-                        if(!reader.IsDBNull(7))
-                        { result.ExplanationOfSce = reader.GetString(7);
+                        if (!reader.IsDBNull(7))
+                        {
+                            result.ExplanationOfSce = reader.GetString(7);
                         }
 
                         // add that Hours object to the list
                         results.Add(result);
                     }
 
-                    return results; }
+                    return results;
+                }
             }
         }
 
@@ -89,7 +92,34 @@ namespace JusticeHours.Services
             {
                 con.Open();
 
-               SqlCommand  cmd =
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "hours_getbyid";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Hours result = new Hours();
+
+                    while (reader.Read())
+                    {
+                        result.Id = reader.GetInt32(0);
+                        result.Week = reader.GetInt32(1);
+                        result.Date = reader.GetString(2);
+                        result.TotalHoursWorked = reader.GetInt32(3);
+                        result.DirectClientContact = reader.GetInt32(4);
+                        result.IndirectClientHours = reader.GetInt32(5);
+                        result.SupervisionHours = reader.GetInt32(6);
+                        // handle null entries
+                        if (!reader.IsDBNull(7))
+                        {
+                            result.ExplanationOfSce = reader.GetString(7);
+                        }
+                    }
+
+                    return result;
+                }
             }
         }
 
