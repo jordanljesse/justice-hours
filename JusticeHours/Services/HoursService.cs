@@ -2,6 +2,7 @@
 using JusticeHours.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,37 @@ namespace JusticeHours.Services
     {
         public int Create(HoursCreateRequest request)
         {
-            return 0;
+            int id = 0;
+
+            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
+            {
+                // open DB connection
+                con.Open();
+
+                // build DB command
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "hours_create";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // map request properties to SQL parameters
+                cmd.Parameters.AddWithValue("@Week", request.Week);
+                cmd.Parameters.AddWithValue("@Date", request.Date);
+                cmd.Parameters.AddWithValue("@TotalHoursWorked", request.TotalHoursWorked);
+                cmd.Parameters.AddWithValue("@DirectClientContact", request.DirectClientContact);
+                cmd.Parameters.AddWithValue("@IndirectClientHours", request.IndirectClientHours);
+                cmd.Parameters.AddWithValue("@SupervisionHours", request.SupervisionHours);
+                cmd.Parameters.AddWithValue("@ExplanationOfSce", request.ExplanationOfSce);
+
+                // setup the id parameter created and returned by SQL
+                SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
+                idParam.Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery(); // execute the cmd built above
+
+                id = (int)cmd.Parameters["@Id"].Value; // store id created by SQL
+            }
+
+            return id;
         }
 
         public List<Hours> GetAll()

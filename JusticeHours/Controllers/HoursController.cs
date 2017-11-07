@@ -40,7 +40,6 @@ namespace JusticeHours.Controllers
             }
 
             int response = hoursService.Create(request);
-
             return Request.CreateResponse(HttpStatusCode.Created, response);
         }
     }
