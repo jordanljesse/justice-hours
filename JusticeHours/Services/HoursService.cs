@@ -38,9 +38,9 @@ namespace JusticeHours.Services
                 SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                 idParam.Direction = ParameterDirection.Output;
 
-                cmd.ExecuteNonQuery(); // execute the cmd built above
+                cmd.ExecuteNonQuery();
 
-                id = (int)cmd.Parameters["@Id"].Value; // store id created by SQL
+                id = (int)cmd.Parameters["@Id"].Value;
             }
 
             return id;
@@ -72,22 +72,25 @@ namespace JusticeHours.Services
                         result.SupervisionHours = reader.GetInt32(6);
                         // handle null entries
                         if(!reader.IsDBNull(7))
-                        {
-                            result.ExplanationOfSce = reader.GetString(7);
+                        { result.ExplanationOfSce = reader.GetString(7);
                         }
 
                         // add that Hours object to the list
                         results.Add(result);
                     }
 
-                    return results;
-                }
+                    return results; }
             }
         }
 
         public Hours GetById(int id)
         {
-            return null;
+            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
+            {
+                con.Open();
+
+               SqlCommand  cmd =
+            }
         }
 
         public int Update(HoursUpdateRequest request)
