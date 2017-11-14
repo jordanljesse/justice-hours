@@ -23,7 +23,8 @@ namespace JusticeHours.Controllers
 
         [HttpPost]
         public HttpResponseMessage Create(HoursCreateRequest request)
-        {
+        {   
+            // check to see if the request is valid
             if (request == null)
             {
                 ModelState.AddModelError("", "Missing body data.");
@@ -50,5 +51,12 @@ namespace JusticeHours.Controllers
             return hoursService.GetById(id);
         }
 
+        // TODO: fix AngularJS vm.editEntry() so this method can move forward
+        [HttpPut, Route("{id:int}")]
+        public HttpResponseMessage Update(HoursUpdateRequest request)
+        {
+            int response = hoursService.Update(request);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
     }
 }

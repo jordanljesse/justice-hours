@@ -10,17 +10,17 @@
         var svc = this;
 
         svc.hoursArray = [];
-        svc.getAll = _getAll;
-        svc.create = _create;
+        svc.getAllEntries = _getAllEntries;
+        svc.createEntry = _createEntry;
 
-        function _getAll() {
+        function _getAllEntries() {
             return $http({
                 url: '/api/hours',
                 method: 'GET'
             });
         }
 
-        function _create(request) {
+        function _createEntry(request) {
             return $http({
                 url: '/api/hours',
                 method: 'POST',
