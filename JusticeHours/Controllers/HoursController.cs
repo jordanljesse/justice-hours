@@ -51,12 +51,14 @@ namespace JusticeHours.Controllers
             return hoursService.GetById(id);
         }
 
-        // TODO: fix AngularJS vm.editEntry() so this method can move forward
+        // TODO: finish this feature and write the corresponding service
         [HttpPut, Route("{id:int}")]
         public HttpResponseMessage Update(HoursUpdateRequest request)
         {
             int response = hoursService.Update(request);
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+        // TODO: write the delete method
     }
 }

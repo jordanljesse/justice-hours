@@ -26,6 +26,7 @@
             supervisionHours: null,
             explanationOfSce: null
         };
+        vm.hoursArray = [];
         vm.getAllEntries = _getAllEntries;
         vm.clearForm = _clearForm;
         vm.editEntry = _editEntry;
@@ -40,7 +41,6 @@
             hoursService.createEntry(vm.form);
         }
 
-        // TODO: troubleshoot vm.form not reflecting data in 'entry'($ctrl vs controllerAs vm?)
         function _editEntry(entry) {
             vm.form = entry;
         }
@@ -48,5 +48,9 @@
         function _clearForm() {
             vm.form = null;
         }
+
+        // TODO: implement method to update an entry
+
+        // TODO: implement method to delete an entry
     }
 })();

@@ -122,15 +122,7 @@ namespace JusticeHours.Services
                 }
             }
         }
-
-        public int Update(HoursUpdateRequest request)
-        {
-            return 0;
-        }
-
-        public int Delete(int id)
-        {
-            return 0;
-        }
+        
+        // TODO: write 'Update' & 'Delete' methods
     }
 }
