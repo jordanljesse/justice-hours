@@ -23,7 +23,7 @@ namespace JusticeHours.Controllers
 
         [HttpPost]
         public HttpResponseMessage Create(HoursCreateRequest request)
-        {   
+        {
             // check to see if the request is valid
             if (request == null)
             {
@@ -51,7 +51,7 @@ namespace JusticeHours.Controllers
             return hoursService.GetById(id);
         }
 
-        // TODO: finish this feature and write the corresponding service
+        // TODO: finish HoursController.Update method 
         [HttpPut, Route("{id:int}")]
         public HttpResponseMessage Update(HoursUpdateRequest request)
         {
@@ -59,6 +59,6 @@ namespace JusticeHours.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        // TODO: write the delete method
+        // TODO: write the HoursController.Delete method
     }
 }

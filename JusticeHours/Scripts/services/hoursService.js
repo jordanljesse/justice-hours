@@ -12,6 +12,7 @@
         svc.hoursArray = [];
         svc.getAllEntries = _getAllEntries;
         svc.createEntry = _createEntry;
+        svc.deleteEntry = _deleteEntry;
 
         function _getAllEntries() {
             return $http({
@@ -25,6 +26,14 @@
                 url: '/api/hours',
                 method: 'POST',
                 data: request
+            });
+        }
+
+        function _deleteEntry(index) {
+            return $http({
+                url: '/api/hours',
+                method: 'DELETE',
+                data: index
             });
         }
     }

@@ -123,6 +123,16 @@ namespace JusticeHours.Services
             }
         }
         
-        // TODO: write 'Update' & 'Delete' methods
+        // TODO: write HoursService.Update method
+        public int Update(HoursUpdateRequest request)
+        {
+            return 0;
+        }
+
+        // TODO: write HoursService.Delete method
+        public int Delete(int id)
+        {
+            return 0;
+        }
     }
 }
