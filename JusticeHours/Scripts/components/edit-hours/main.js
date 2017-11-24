@@ -57,7 +57,7 @@
             console.log('vm.updateEntry has fired');
         }
 
-        function _deleteEntry(index, $event) {
+        function _deleteEntry(index, $event) { // TODO: pass in the entry.id NOT index
             $event.stopPropagation();
             hoursService.deleteEntry(index);
         }

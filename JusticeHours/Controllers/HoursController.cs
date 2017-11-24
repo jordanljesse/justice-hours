@@ -14,12 +14,14 @@ namespace JusticeHours.Controllers
     [AllowAnonymous] // does not require a valid cookie
     public class HoursController : ApiController
     {
+
         readonly IHoursService hoursService;
 
         public HoursController()
         {
             this.hoursService = new HoursService();
         }
+
 
         [HttpPost]
         public HttpResponseMessage Create(HoursCreateRequest request)
@@ -60,5 +62,6 @@ namespace JusticeHours.Controllers
         }
 
         // TODO: write the HoursController.Delete method
+        [HttpDelete, Route("{id:int}")]
     }
 }
