@@ -61,7 +61,11 @@ namespace JusticeHours.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        // TODO: write the HoursController.Delete method
         [HttpDelete, Route("{id:int}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            int response = hoursService.Delete(id);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
     }
 }

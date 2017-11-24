@@ -132,7 +132,7 @@ namespace JusticeHours.Services
         // TODO: write HoursService.Delete method
         public int Delete(int id)
         {
-            return 0;
+            return id;
         }
     }
 }

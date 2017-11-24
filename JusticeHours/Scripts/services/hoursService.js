@@ -29,11 +29,11 @@
             });
         }
 
-        function _deleteEntry(index) { // TODO: pass in entry.id NOT index
+        function _deleteEntry(id) {
             return $http({
                 url: '/api/hours',
                 method: 'DELETE',
-                data: index
+                data: id
             });
         }
     }
