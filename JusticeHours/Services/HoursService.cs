@@ -122,16 +122,28 @@ namespace JusticeHours.Services
                 }
             }
         }
-        
+
         // TODO: write HoursService.Update method
         public int Update(HoursUpdateRequest request)
         {
             return 0;
         }
 
-        // TODO: write HoursService.Delete method
         public int Delete(int id)
         {
+            using (SqlConnection con = new SqlConnection("data source=WINDWOS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
+            {
+                con.Open();
+
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "hours_delete";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+
             return id;
         }
     }
