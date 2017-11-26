@@ -37,7 +37,10 @@
 
         function _getAllEntries() {
             hoursService.getAllEntries()
-                .then(response => vm.hoursArray = response.data, error => console.error(error));
+                .then(
+                response => vm.hoursArray = response.data,
+                error => console.error(error)
+                );
         }
 
         function _createEntry() {
@@ -60,10 +63,12 @@
         function _deleteEntry(id, $event) {
             $event.stopPropagation();
             hoursService.deleteEntry(id)
-                .then(
-                response => console.log('vm.deleteEntry complete', response),
-                error => console.error('vm.deleteEntry fail', error)
-                );
+                .then(_complete, error => console.error('vm.deleteEntry fail', error));
+
+            function _complete(response) {
+                _getAllEntries();
+                console.log('vm.deleteEntry complete', response);
+            }
         }
     }
 })();
