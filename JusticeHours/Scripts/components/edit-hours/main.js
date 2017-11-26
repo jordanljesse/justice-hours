@@ -59,7 +59,11 @@
 
         function _deleteEntry(id, $event) {
             $event.stopPropagation();
-            hoursService.deleteEntry(id);
+            hoursService.deleteEntry(id)
+                .then(
+                response => console.log('vm.deleteEntry complete', response),
+                error => console.error('vm.deleteEntry fail', error)
+                );
         }
     }
 })();

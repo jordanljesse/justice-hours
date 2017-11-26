@@ -31,9 +31,8 @@
 
         function _deleteEntry(id) {
             return $http({
-                url: '/api/hours',
-                method: 'DELETE',
-                data: id
+                url: '/api/hours/' + encodeURIComponent(id),
+                method: 'DELETE'
             });
         }
     }

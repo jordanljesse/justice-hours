@@ -131,7 +131,7 @@ namespace JusticeHours.Services
 
         public int Delete(int id)
         {
-            using (SqlConnection con = new SqlConnection("data source=WINDWOS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
+            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
             {
                 con.Open();
 
