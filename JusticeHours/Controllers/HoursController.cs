@@ -22,7 +22,7 @@ namespace JusticeHours.Controllers
             this.hoursService = new HoursService();
         }
 
-
+        
         [HttpPost]
         public HttpResponseMessage Create(HoursCreateRequest request)
         {

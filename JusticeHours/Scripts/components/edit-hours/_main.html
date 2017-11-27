@@ -26,21 +26,26 @@
                     <label for="indirect">Indirect Client Hours</label>
                     <input type="number" name="indirect" id="indirect" class="form-control" placeholder="ex. 15" ng-model="$ctrl.form.IndirectClientHours">
                 </div>
+                <div class="form-group col">
+                    <label for="supervision">Supervision Hours</label>
+                    <input type="number" name="supervision" id="supervision" class="form-control" placeholder="ex. 5" ng-model="$ctrl.form.SupervisionHours">
+                </div>
+                <div class="form-group col">
+                    <label for="total">Total Hours Worked</label>
+                    <input type="number" name="total" id="total" class="form-control" placeholder="ex. 40" ng-model="$ctrl.form.TotalHoursWorked">
+                </div>
             </div>
             <div class="form-group">
-                <label for="supervision">Supervision Hours</label>
-                <input type="number" name="supervision" id="supervision" class="form-control" placeholder="ex. 5" ng-model="$ctrl.form.SupervisionHours">
-            </div>
-            <div class="form-group">
-                <label for="total">Total Hours Worked</label>
-                <input type="number" name="total" id="total" class="form-control" placeholder="ex. 40" ng-model="$ctrl.form.TotalHoursWorked">
+                <label for="explanation">Explanation of SCE</label>
+                <textarea name="explanation" id="explanation" class="form-control" placeholder="ex. Did five intakes" ng-model="$ctrl.form.ExplanationOfSce" />
             </div>
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <button type="submit" class="btn btn-primary" ng-click="$ctrl.createEntry()">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-show="!$ctrl.editMode" ng-click="$ctrl.createEntry()">Submit</button>
+                    <button type="submit" class="btn btn-warning" ng-show="$ctrl.editMode" ng-click="$ctrl.updateEntry()">Update</button>
                 </div>
                 <div class="col-3">
-                    <button type="submit" class="btn btn-warming" ng-click="$ctrl.clearForm()">Clear</button>
+                    <button type="submit" class="btn btn-default" ng-click="$ctrl.clearForm()">Clear</button>
                 </div>
             </div>
         </form>
@@ -55,10 +60,17 @@
         <div ng-repeat="entry in $ctrl.hoursArray">
             <div class="entry" ng-click="$ctrl.editEntry(entry)">
                 <button type="submit" class="btn btn-danger btnDelete" ng-click="$ctrl.deleteEntry(entry.Id, $event)">X</button>
-                <p><strong>Week:</strong> {{ entry.Week }} <strong>Date:</strong> {{ entry.Date }}</p>
-                <p><strong>Direct:</strong> {{ entry.DirectClientContact }} <strong>Indirect:</strong> {{ entry.IndirectClientHours }}</p>
-                <p><strong>Supervision:</strong> {{ entry.SupervisionHours }}</p>
-                <p><strong>Total Hours Worked:</strong> {{ entry.TotalHoursWorked }}</p>
+                <p>
+                    <strong>Week: </strong><nbsp></nbsp>{{ entry.Week }}
+                    <nbsp></nbsp><strong>Date: </strong>{{ entry.Date }}
+                </p>
+                <p>
+                    <strong>Direct: </strong>{{ entry.DirectClientContact }}
+                    <strong>Indirect: </strong>{{ entry.IndirectClientHours }}
+                    <strong>Supervision: </strong>{{ entry.SupervisionHours }}
+                </p>
+                <p><strong>Total Hours Worked: </strong>{{ entry.TotalHoursWorked }}</p>
+                <p><strong>Explanation of SCE: </strong>{{ entry.ExplanationOfSce }}</p>
             </div>
         </div>
     </div>

@@ -17,24 +17,20 @@ namespace JusticeHours.Services
 
             using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
             {
-                // open DB connection
                 con.Open();
 
-                // build DB command
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandText = "hours_create";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                // map request properties to SQL parameters
                 cmd.Parameters.AddWithValue("@Week", request.Week);
                 cmd.Parameters.AddWithValue("@Date", request.Date);
                 cmd.Parameters.AddWithValue("@TotalHoursWorked", request.TotalHoursWorked);
                 cmd.Parameters.AddWithValue("@DirectClientContact", request.DirectClientContact);
                 cmd.Parameters.AddWithValue("@IndirectClientHours", request.IndirectClientHours);
                 cmd.Parameters.AddWithValue("@SupervisionHours", request.SupervisionHours);
-                cmd.Parameters.AddWithValue("@ExplanationOfSce", request.ExplanationOfSce);
+                cmd.Parameters.AddWithValue("@ExplanationOfSce", request.ExplanationOfSce); // TODO: handle ExplanationOfSce = Null
 
-                // setup the id parameter created and returned by SQL
                 SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                 idParam.Direction = ParameterDirection.Output;
 
@@ -62,7 +58,6 @@ namespace JusticeHours.Services
 
                     while (reader.Read())
                     {
-                        // create new Hours object
                         Hours result = new Hours();
                         result.Id = reader.GetInt32(0);
                         result.Week = reader.GetInt32(1);
@@ -71,13 +66,13 @@ namespace JusticeHours.Services
                         result.DirectClientContact = reader.GetInt32(4);
                         result.IndirectClientHours = reader.GetInt32(5);
                         result.SupervisionHours = reader.GetInt32(6);
+
                         // handle null entries
                         if (!reader.IsDBNull(7))
                         {
                             result.ExplanationOfSce = reader.GetString(7);
                         }
 
-                        // add that Hours object to the list
                         results.Add(result);
                     }
 
