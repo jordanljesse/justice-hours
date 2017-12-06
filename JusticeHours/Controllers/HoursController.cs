@@ -22,7 +22,7 @@ namespace JusticeHours.Controllers
             this.hoursService = new HoursService();
         }
 
-        
+
         [HttpPost]
         public HttpResponseMessage Create(HoursCreateRequest request)
         {
@@ -47,14 +47,7 @@ namespace JusticeHours.Controllers
             return hoursService.GetAll();
         }
 
-        [HttpGet, Route("{id:int}")]
-        public Hours GetById(int id)
-        {
-            return hoursService.GetById(id);
-        }
-
-        // TODO: finish HoursController.Update method 
-        [HttpPut, Route("{id:int}")]
+        [HttpPut, Route("{id:int}")] // TODO: finish HoursController.Update method
         public HttpResponseMessage Update(HoursUpdateRequest request)
         {
             int response = hoursService.Update(request);
