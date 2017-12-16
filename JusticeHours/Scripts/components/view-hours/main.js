@@ -1,56 +1,54 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	angular.module(APPNAME)
+    angular.module(APPNAME)
 		.component('viewHours', {
-			templateUrl: '../Scripts/components/view-hours/_main.html',
-			controller: 'viewController',
-			controllerAs: 'vm'
+		    templateUrl: '../Scripts/components/view-hours/_main.html',
+		    controller: 'viewController',
+		    controllerAs: 'vm'
 		});
 
-	angular.module(APPNAME)
+    angular.module(APPNAME)
 		.controller('viewController', viewController);
 
-	viewController.$inject = ['hoursService'];
+    viewController.$inject = ['hoursService'];
 
-	function viewController(hoursService) {
-		var vm = this;
+    function viewController(hoursService) {
+        var vm = this;
 
-		// store the hours entries
-		vm.table = hoursService.table;
-		
-		// hold all the calculations performed on entries in the table
-		vm.hours = {
-			total: null,
-			direct: null,
-			indirect: null,
-			supervision: null
-		};
 
-		vm.getTotalHours = _getTotalHours;
-		vm.getSupervisionTotal = _getSupervisionTotal;
-		vm.getDirectTotal = _getDirectTotal;
-		vm.getIndirectTotal = _getIndirectTotal;
-		vm.$onInit = _getTotalHours();
-		vm.$onInit = _getSupervisionTotal();
-		vm.$onInit = _getDirectTotal();
-		vm.$onInit = _getIndirectTotal();
+        // hold all the calculations performed on entries in the table
+        vm.hours = {
+            total: null,
+            direct: null,
+            indirect: null,
+            supervision: null
+        };
+        vm.table = hoursService.table; // store the hours entries
+        vm.getTotalHours = _getTotalHours;
+        vm.getSupervisionTotal = _getSupervisionTotal;
+        vm.getDirectTotal = _getDirectTotal;
+        vm.getIndirectTotal = _getIndirectTotal;
+        vm.$onInit = _getTotalHours();
+        vm.$onInit = _getSupervisionTotal();
+        vm.$onInit = _getDirectTotal();
+        vm.$onInit = _getIndirectTotal();
 
-		function _getTotalHours() {
-			vm.hours.total = hoursService.getTotalHours();
-		}
 
-		function _getSupervisionTotal() {
-			vm.hours.supervision = hoursService.getSupervisionTotal();
-		}
-		
-		function _getDirectTotal() {
-			vm.hours.direct = hoursService.getDirectTotal();
-		}
+        function _getTotalHours() {
+            vm.hours.total = hoursService.getTotalHours();
+        }
 
-		function _getIndirectTotal() {
-			vm.hours.indirect = hoursService.getIndirectTotal();
-		}
+        function _getSupervisionTotal() {
+            vm.hours.supervision = hoursService.getSupervisionTotal();
+        }
 
-	}
+        function _getDirectTotal() {
+            vm.hours.direct = hoursService.getDirectTotal();
+        }
+
+        function _getIndirectTotal() {
+            vm.hours.indirect = hoursService.getIndirectTotal();
+        }
+    }
 })();

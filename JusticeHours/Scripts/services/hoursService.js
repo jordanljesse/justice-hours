@@ -9,11 +9,14 @@
     function hoursService($http) {
         var svc = this;
 
+
         svc.hoursArray = [];
         svc.getAllEntries = _getAllEntries;
         svc.createEntry = _createEntry;
         svc.deleteEntry = _deleteEntry;
         svc.updateEntry = _updateEntry;
+        svc.getTotalHours = _getTotalHours;
+
 
         function _createEntry(request) {
             return $http({
@@ -43,6 +46,10 @@
                 url: '/api/hours/' + encodeURIComponent(id),
                 method: 'DELETE'
             });
+        }
+
+        function _getTotalHours() {
+
         }
     }
 })();
