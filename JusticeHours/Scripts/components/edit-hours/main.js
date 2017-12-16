@@ -38,17 +38,41 @@
         vm.$onInit = _getAllEntries();
 
 
-        function _getAllEntries() {
-            hoursService.getAllEntries()
-                .then(response => vm.hoursArray = response.data, error => console.error(error));
-        }
-
         function _createEntry() {
             console.log('vm.form', vm.form);
             hoursService.createEntry(vm.form)
                 .then(_success, error => console.error(error));
 
             function _success(response) {
+                _clearForm();
+                _getAllEntries();
+                console.log(response);
+            }
+        }
+
+        function _getAllEntries() {
+            hoursService.getAllEntries()
+                .then(response => vm.hoursArray = response.data, error => console.error(error));
+        }
+
+        function _updateEntry() {
+            hoursService.updateEntry(vm.form.Id, vm.form)
+                .then(_complete, error => console.error(error));
+
+            function _complete(response) {
+                _clearForm();
+                _getAllEntries();
+                console.log(response);
+            }
+        }
+
+        function _deleteEntry(id, $event) {
+            $event.stopPropagation();
+            if (window.confirm("Are you sure you want to delete this hours entry?"))
+                hoursService.deleteEntry(id)
+                    .then(_complete, error => console.error(error));
+
+            function _complete(response) {
                 _getAllEntries();
                 console.log(response);
             }
@@ -62,27 +86,6 @@
         function _clearForm() {
             vm.form = null;
             vm.editMode = false;
-        }
-
-        function _deleteEntry(id, $event) {
-            $event.stopPropagation();
-            hoursService.deleteEntry(id)
-                .then(_complete, error => console.error(error));
-
-            function _complete(response) {
-                _getAllEntries();
-                console.log(response);
-            }
-        }
-
-        function _updateEntry() {
-            hoursService.updateEntry(vm.form.Id, vm.form)
-                .then(_complete, error => console.error(error));
-
-            function _complete(response) {
-                _getAllEntries();
-                console.log(response);
-            }
         }
     }
 })();
