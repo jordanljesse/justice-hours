@@ -4,8 +4,7 @@
     angular.module(APPNAME)
 		.component('viewHours', {
 		    templateUrl: '../Scripts/components/view-hours/_main.html',
-		    controller: 'viewController',
-		    controllerAs: 'vm'
+		    controller: 'viewController'
 		});
 
     angular.module(APPNAME)
@@ -25,30 +24,24 @@
             supervision: null
         };
         vm.table = hoursService.table; // store the hours entries
-        vm.getTotalHours = _getTotalHours;
-        vm.getSupervisionTotal = _getSupervisionTotal;
-        vm.getDirectTotal = _getDirectTotal;
-        vm.getIndirectTotal = _getIndirectTotal;
-        vm.$onInit = _getTotalHours();
-        vm.$onInit = _getSupervisionTotal();
-        vm.$onInit = _getDirectTotal();
-        vm.$onInit = _getIndirectTotal();
+        vm.getHours = _getHours;
+        vm.$onInit = _getHours();
 
 
-        function _getTotalHours() {
-            vm.hours.total = hoursService.getTotalHours();
-        }
+        function _getHours() {
+            hoursService.getAllEntries()
+                .then(_complete, error => console.error(error));
 
-        function _getSupervisionTotal() {
-            vm.hours.supervision = hoursService.getSupervisionTotal();
-        }
+            function _complete(response) {
+                vm.table = response.data;
 
-        function _getDirectTotal() {
-            vm.hours.direct = hoursService.getDirectTotal();
-        }
-
-        function _getIndirectTotal() {
-            vm.hours.indirect = hoursService.getIndirectTotal();
+                for (let i = 0; i < vm.table.length; i++) {
+                    vm.hours.total += vm.table[i].TotalHoursWorked;
+                    vm.hours.direct += vm.table[i].DirectClientContact;
+                    vm.hours.indirect += vm.table[i].IndirectClientHours;
+                    vm.hours.supervision += vm.table[i].SupervisionHours;
+                }
+            }
         }
     }
 })();

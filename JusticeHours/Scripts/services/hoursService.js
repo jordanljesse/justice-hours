@@ -11,11 +11,10 @@
 
 
         svc.hoursArray = [];
-        svc.getAllEntries = _getAllEntries;
         svc.createEntry = _createEntry;
-        svc.deleteEntry = _deleteEntry;
+        svc.getAllEntries = _getAllEntries;
         svc.updateEntry = _updateEntry;
-        svc.getTotalHours = _getTotalHours;
+        svc.deleteEntry = _deleteEntry;
 
 
         function _createEntry(request) {
@@ -46,10 +45,6 @@
                 url: '/api/hours/' + encodeURIComponent(id),
                 method: 'DELETE'
             });
-        }
-
-        function _getTotalHours() {
-
         }
     }
 })();
