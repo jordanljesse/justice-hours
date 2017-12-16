@@ -16,7 +16,6 @@
         var vm = this;
 
 
-        // hold all the calculations performed on entries in the table
         vm.hours = {
             total: null,
             direct: null,
@@ -41,7 +40,21 @@
                     vm.hours.indirect += vm.table[i].IndirectClientHours;
                     vm.hours.supervision += vm.table[i].SupervisionHours;
                 }
+
+                _generateCharts();
             }
+        }
+
+        function _generateCharts() {
+            d3.select("#hours")
+                .append("svg")
+                .attr("width", 50)
+                .attr("height", 50)
+                .append("circle")
+                .attr("cx", 25)
+                .attr("cy", 25)
+                .attr("r", 25)
+                .style("fill", "green");
         }
     }
 })();
