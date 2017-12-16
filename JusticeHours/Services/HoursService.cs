@@ -81,12 +81,31 @@ namespace JusticeHours.Services
             }
         }
 
-        public int Update(HoursUpdateRequest request) // TODO: write HoursService.Update method
-
+        public int Update(HoursUpdateRequest request)
         {
-            return 0;
+            using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))
+            {
+                con.Open();
+
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "hours_update";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", request.Id);
+                cmd.Parameters.AddWithValue("@Week", request.Week);
+                cmd.Parameters.AddWithValue("@Date", request.Date);
+                cmd.Parameters.AddWithValue("@TotalHoursWorked", request.TotalHoursWorked);
+                cmd.Parameters.AddWithValue("@DirectClientContact", request.DirectClientContact);
+                cmd.Parameters.AddWithValue("@IndirectClientHours", request.IndirectClientHours);
+                cmd.Parameters.AddWithValue("@SupervisionHours", request.SupervisionHours);
+                cmd.Parameters.AddWithValue("@ExplanationOfSce", request.ExplanationOfSce);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            return request.Id;
         }
-        
+
         public int Delete(int id)
         {
             using (SqlConnection con = new SqlConnection("data source=WINDOWS-10-MBP\\SQLEXPRESS; database=JusticeHours; integrated security=SSPI"))

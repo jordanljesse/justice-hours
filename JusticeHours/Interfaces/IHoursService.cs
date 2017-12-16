@@ -10,7 +10,7 @@ namespace JusticeHours.Interfaces
     {
         int Create(HoursCreateRequest request);
         List<Hours> GetAll();
-        int Update(HoursUpdateRequest request); // TODO: implement IHoursService.Update method in HoursService
+        int Update(HoursUpdateRequest request);
         int Delete(int id);
     }
 }

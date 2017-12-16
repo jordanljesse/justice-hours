@@ -13,6 +13,15 @@
         svc.getAllEntries = _getAllEntries;
         svc.createEntry = _createEntry;
         svc.deleteEntry = _deleteEntry;
+        svc.updateEntry = _updateEntry;
+
+        function _createEntry(request) {
+            return $http({
+                url: '/api/hours',
+                method: 'POST',
+                data: request
+            });
+        }
 
         function _getAllEntries() {
             return $http({
@@ -21,10 +30,10 @@
             });
         }
 
-        function _createEntry(request) {
+        function _updateEntry(id, request) {
             return $http({
-                url: '/api/hours',
-                method: 'POST',
+                url: '/api/hours/' + encodeURIComponent(id),
+                method: 'PUT',
                 data: request
             });
         }

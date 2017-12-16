@@ -29,12 +29,12 @@
         };
         vm.hoursArray = [];
         vm.editMode = false;
-        vm.getAllEntries = _getAllEntries;
         vm.createEntry = _createEntry;
+        vm.getAllEntries = _getAllEntries;
+        vm.updateEntry = _updateEntry;
+        vm.deleteEntry = _deleteEntry;
         vm.editEntry = _editEntry;
         vm.clearForm = _clearForm;
-        vm.deleteEntry = _deleteEntry;
-        vm.updateEntry = _updateEntry;
         vm.$onInit = _getAllEntries();
 
 
@@ -54,7 +54,7 @@
             }
         }
 
-        function _editEntry(entry) { 
+        function _editEntry(entry) {
             vm.form = angular.copy(entry);
             vm.editMode = true;
         }
@@ -76,8 +76,13 @@
         }
 
         function _updateEntry() {
-            hoursService.updateEntry(vm.form)
-                .then(_success, _error);
+            hoursService.updateEntry(vm.form.Id, vm.form)
+                .then(_complete, error => console.error(error));
+
+            function _complete(response) {
+                _getAllEntries();
+                console.log(response);
+            }
         }
     }
 })();

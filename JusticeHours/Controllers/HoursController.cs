@@ -47,7 +47,7 @@ namespace JusticeHours.Controllers
             return hoursService.GetAll();
         }
 
-        [HttpPut, Route("{id:int}")] // TODO: finish HoursController.Update method
+        [HttpPut, Route("{id:int}")]
         public HttpResponseMessage Update(HoursUpdateRequest request)
         {
             int response = hoursService.Update(request);
