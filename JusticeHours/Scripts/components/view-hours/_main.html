@@ -1,6 +1,10 @@
-<div id="hours">
-    <h3>Total Direct Client Contact Hours: {{ $ctrl.hours.direct }}</h3>
-    <h3>Total Indirect Client Hours: {{ $ctrl.hours.indirect }}</h3>
-    <h3>Total Supervision Hours: {{ $ctrl.hours.supervision }}</h3>
-    <h3>Total Hours Worked: {{ $ctrl.hours.total }}</h3>
+<div class="row">
+    <div id="hours" class="col-4 offset-2">
+        <p>Direct Client Contact: <strong>{{ $ctrl.hours.direct }}</strong></p>
+        <p>Indirect Client: <strong>{{ $ctrl.hours.indirect }}</strong></p>
+        <hr class="white-line" />
+        <p>Total: <strong>{{ $ctrl.hours.total }}</strong></p>
+        <p><em>Supervision: <strong>{{ $ctrl.hours.supervision }}/2000</strong></em></p>
+    </div>
+    <div id="pie" class="col-4"></div>
 </div>

@@ -41,20 +41,36 @@
                     vm.hours.supervision += vm.table[i].SupervisionHours;
                 }
 
-                _generateCharts();
+                _generatePie();
             }
         }
 
-        function _generateCharts() {
-            d3.select("#hours")
-                .append("svg")
-                .attr("width", 50)
-                .attr("height", 50)
-                .append("circle")
-                .attr("cx", 25)
-                .attr("cy", 25)
-                .attr("r", 25)
-                .style("fill", "green");
+        function _generatePie() {
+            let pie = new d3pie('pie', {
+                labels: {
+                    mainLabel: {
+                        color: '#FFFFFF',
+                        fontSize: 16
+                    },
+                    percentage: {
+                        fontSize: 16
+                    }
+                },
+                data: {
+                    content: [
+                        { label: 'direct', value: vm.hours.direct },
+                        { label: 'indirect', value: vm.hours.indirect }
+                    ]
+                },
+                callbacks: {
+                    onMouseoverSegment: function (info) {
+                        console.log('mouse in', info);
+                    },
+                    onMouseoutSegment: function (info) {
+                        console.log('mouse out', info);
+                    }
+                }
+            });
         }
     }
 })();

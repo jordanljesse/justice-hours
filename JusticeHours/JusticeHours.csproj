@@ -192,6 +192,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\img\bg-image.jpg" />
     <Content Include="Content\index.html" />
     <Content Include="Content\style.css" />
     <Content Include="Content\_navbar.html" />
@@ -231,6 +232,7 @@
     <Content Include="Scripts\components\user-login\_main.html" />
     <Content Include="Scripts\components\view-hours\main.js" />
     <Content Include="Scripts\components\view-hours\_main.html" />
+    <Content Include="Scripts\d3pie.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />

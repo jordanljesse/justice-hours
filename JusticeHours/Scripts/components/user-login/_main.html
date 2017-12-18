@@ -1,28 +1,26 @@
 <div class="row justify-content-center">
-    <div class="col-5">
+    <div class="col-9">
         <!-- Login Form -->
         <form name="loginForm" ng-show="!$ctrl.registerMode">
             <div class="row text-center">
-                <div class="col">
-                    <h1>Login</h1>
+                <div class="col tagline">
+                    <p>Track your licensure hours quickly and accurately so you can get some rest :)</p>
                 </div>
             </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="login">Login</label>
-                <input type="text" class="col-9 form-control" name="login" id="login" placeholder="Username or Email" ng-model="$ctrl.loginForm.login" />
+            <div class="row form-group">
+                <input type="text" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="login" id="login" placeholder="login" ng-model="$ctrl.loginForm.login" />
             </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="loginPassword">Password</label>
-                <input type="password" class="col-9 form-control" name="loginPassword" id="loginPassword" placeholder="Password" ng-model="$ctrl.loginForm.password" />
+            <div class="row form-group">
+                <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="loginPassword" id="loginPassword" placeholder="password" ng-model="$ctrl.loginForm.password" />
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button id="btn-login" type="submit">Login</button>
                 </div>
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-6">
-                    <small>Need an account? <a href="#" ng-click="$ctrl.toggleRegister()">Register</a></small>
+                    <small>Need an account? <a href="#" ng-click="$ctrl.toggleRegister()">Register</a>.</small>
                 </div>
             </div>
         </form>
@@ -30,33 +28,26 @@
         <form name="registerForm" ng-show="$ctrl.registerMode">
             <div class="row text-center">
                 <div class="col">
-                    <h1>Register</h1>
+                    <p class="tagline">Register for an account here:</pclass="col>
                 </div>
             </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="fullName">Full Name</label>
-                <input type="text" class="col-9 form-control" name="fullName" id="fullName" placeholder="Jane Doe" ng-model="$ctrl.registerForm.fullName" />
+            <div class="row form-group">
+                <input type="text" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="userName" id="userName" placeholder="user name" ng-model="$ctrl.registerForm.userName" />
             </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="userName">User Name</label>
-                <input type="text" class="col-9 form-control" name="userName" id="userName" placeholder="basketsofsoftkittens88" ng-model="$ctrl.registerForm.userName" />
+            <div class="row form-group">
+                <input type="email" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="email" id="email" placeholder="example@email.com" ng-model="$ctrl.registerForm.email" />
             </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="email">Email</label>
-                <input type="email" class="col-9 form-control" name="email" id="email" placeholder="yourname@mailprovider.com" ng-model="$ctrl.registerForm.email" />
-            </div>
-            <div class="row form-group form-inline">
-                <label class="col-3" for="registerPassword">Password</label>
-                <input type="password" class="col-9 form-control" name="registerPassword" id="registerPassword" placeholder="Password" ng-model="$ctrl.registerForm.password" />
+            <div class="row form-group">
+                <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="registerPassword" id="registerPassword" placeholder="password" ng-model="$ctrl.registerForm.password" />
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button id="btn-register" type="submit">Register</button>
                 </div>
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-5">
-                    <small>Have an account? <a href="#" ng-click="$ctrl.toggleRegister()">Login</a></small>
+                    <small>Have an account? <a href="#" ng-click="$ctrl.toggleRegister()">Login</a>.</small>
                 </div>
             </div>
         </form>

@@ -1,14 +1,113 @@
+body {
+    background-image: url(img/bg-image.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+
+#nav-bar {
+    background-color: rgba(0, 0,0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+#logo {
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-size: 48px;
+    letter-spacing: 0.5px;
+    line-height: 58px;
+    color: #FFFFFF;
+}
+
+#nav-links a {
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+    #nav-links a:hover {
+        color: #00A752;
+        text-decoration-line: underline
+    }
+
+#btn-login,
+#btn-register {
+    margin: 10px 0px;
+    background-image: linear-gradient(-179deg, #00A752 13%, #006E29 93%);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 25px;
+}
+
+#hours {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    margin-top: 80px;
+    font-size: 24px;
+}
+
+#hours-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+#hours-form {
+    padding: 15px;
+}
+
+.tagline {
+    margin: 160px 0px 40px;
+    font-size: 24px;
+}
+
+a:hover {
+    color: #00A752;
+}
+
 .entry {
-	border: 2px solid lightgrey;
-	margin: 10px;
-	padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 5px;
 }
-.entry:hover {
-	border: 2px solid black;
-}
+
+    .entry:hover {
+        border: 2px solid #00A752;
+    }
+
 .btnDelete {
-	float: right;
+    float: right;
 }
+
 .navbar {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.nav-item {
+    margin: 0px 15px;
+}
+
+input, textarea {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 15px;
+    font-size: 24px;
+    border: none;
+    padding: 5px;
+    color: #FFFFFF;
+}
+
+#hours-form input {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+small a {
+    color: #00A752;
+}
+
+.white-line {
+    border-top: 3px solid #FFFFFF;
+}
+
+li.active {
+    color: #00A752;
+    text-decoration-line: underline;
 }
