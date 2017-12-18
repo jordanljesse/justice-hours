@@ -1,43 +1,43 @@
 <div class="row justify-content-around">
-    <div class="col-6">
+    <div class="col-4">
         <!-- Hours Form -->
         <div id="hours-bg">
             <form id="hours-form" name="hoursForm">
                 <div class="form-row">
-                    <div class="form-group col-2">
-                        <label for="week">Week</label>
-                        <input type="number" name="week" id="week" placeholder="Week" ng-model="$ctrl.form.Week">
-                    </div>
                     <div class="form-group col-4">
+                        <label for="week">Week</label>
+                        <input class="form-control" type="number" name="week" id="week" placeholder="Week" ng-model="$ctrl.form.Week">
+                    </div>
+                    <div class="form-group col-8">
                         <label for="date">Date</label>
-                        <input type="text" name="date" id="date" placeholder="Date" ng-model="$ctrl.form.Date">
+                        <input class="form-control" type="text" name="date" id="date" placeholder="Date" ng-model="$ctrl.form.Date">
                     </div>
                 </div>
-                <div class="form-row form-inline">
+                <div class="form-row">
                     <div class="form-group col">
                         <label for="direct">Direct</label>
-                        <input type="number" name="direct" id="direct" placeholder="Direct" ng-model="$ctrl.form.DirectClientContact">
+                        <input class="form-control" type="number" name="direct" id="direct" placeholder="Direct" ng-model="$ctrl.form.DirectClientContact">
                     </div>
                     <div class="form-group col">
                         <label for="indirect">Indirect</label>
-                        <input type="number" name="indirect" id="indirect" placeholder="Indirect" ng-model="$ctrl.form.IndirectClientHours">
+                        <input class="form-control" type="number" name="indirect" id="indirect" placeholder="Indirect" ng-model="$ctrl.form.IndirectClientHours">
                     </div>
                     <div class="form-group col">
                         <label for="supervision">Supervision</label>
-                        <input type="number" name="supervision" id="supervision" placeholder="Supervision" ng-model="$ctrl.form.SupervisionHours">
+                        <input class="form-control" type="number" name="supervision" id="supervision" placeholder="Supervision" ng-model="$ctrl.form.SupervisionHours">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="explanation">Explanation of SCE</label>
-                    <textarea name="explanation" id="explanation" placeholder="Explanation of SCE" cols="40" rows="6" ng-model="$ctrl.form.ExplanationOfSce" />
+                    <textarea class="form-control" name="explanation" id="explanation" placeholder="Explanation of SCE" cols="20" rows="6" ng-model="$ctrl.form.ExplanationOfSce" />
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-3">
-                        <button type="submit" class="btn btn-primary" ng-show="!$ctrl.editMode" ng-click="$ctrl.createEntry()">Submit</button>
-                        <button type="submit" class="btn btn-warning" ng-show="$ctrl.editMode" ng-click="$ctrl.updateEntry()">Update</button>
+                        <button id="btn-submit" type="submit" ng-show="!$ctrl.editMode" ng-click="$ctrl.createEntry()">Submit</button>
+                        <button id="btn-update" type="submit" ng-show="$ctrl.editMode" ng-click="$ctrl.updateEntry()">Update</button>
                     </div>
                     <div class="col-3">
-                        <button type="submit" class="btn btn-default" ng-click="$ctrl.clearForm()">Clear</button>
+                        <button id="btn-clear" type="submit" ng-click="$ctrl.clearForm()">Clear</button>
                     </div>
                 </div>
             </form>
@@ -45,25 +45,13 @@
     </div>
     <!-- Display Hours Entries -->
     <div class="col-4">
-        <div class="row text-center">
-            <div class="col">
-                <h1>My Hours</h1>
-            </div>
-        </div>
         <div ng-repeat="entry in $ctrl.hoursArray">
             <div class="entry" ng-click="$ctrl.editEntry(entry)">
-                <button type="submit" class="btn btn-danger btnDelete" ng-click="$ctrl.deleteEntry(entry.Id, $event)">X</button>
-                <p>
-                    <strong>Week: </strong><nbsp></nbsp>{{ entry.Week }}
-                    <nbsp></nbsp><strong>Date: </strong>{{ entry.Date }}
-                </p>
-                <p>
-                    <strong>Direct: </strong>{{ entry.DirectClientContact }}
-                    <strong>Indirect: </strong>{{ entry.IndirectClientHours }}
-                    <strong>Supervision: </strong>{{ entry.SupervisionHours }}
-                </p>
-                <p><strong>Total: </strong>{{ entry.TotalHoursWorked }}</p>
-                <p><strong>Explanation of SCE: </strong>{{ entry.ExplanationOfSce }}</p>
+                <button type="submit" class="btn-delete" ng-click="$ctrl.deleteEntry(entry.Id, $event)">X</button>
+                <p><span>Week: {{ entry.Week }}</span><span>Date: {{ entry.Date }}</span></p>
+                <p><span>Direct: {{ entry.DirectClientContact }}</span><span>Indirect: {{ entry.IndirectClientHours }}</span><span>Supervision: {{ entry.SupervisionHours }}</span></p>
+                <p><span>Total: {{ entry.TotalHoursWorked }}</span></p>
+                <p><span>Explanation of SCE: {{ entry.ExplanationOfSce }}</span></p>
             </div>
         </div>
     </div>

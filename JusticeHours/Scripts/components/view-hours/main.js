@@ -35,11 +35,12 @@
                 vm.table = response.data;
 
                 for (let i = 0; i < vm.table.length; i++) {
-                    vm.hours.total += vm.table[i].TotalHoursWorked;
                     vm.hours.direct += vm.table[i].DirectClientContact;
                     vm.hours.indirect += vm.table[i].IndirectClientHours;
                     vm.hours.supervision += vm.table[i].SupervisionHours;
                 }
+
+                vm.hours.total = vm.hours.direct + vm.hours.indirect;
 
                 _generatePie();
             }
@@ -58,8 +59,8 @@
                 },
                 data: {
                     content: [
-                        { label: 'direct', value: vm.hours.direct },
-                        { label: 'indirect', value: vm.hours.indirect }
+                        { label: 'Direct', value: vm.hours.direct },
+                        { label: 'Indirect', value: vm.hours.indirect }
                     ]
                 },
                 callbacks: {
