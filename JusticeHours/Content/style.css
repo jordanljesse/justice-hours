@@ -42,7 +42,6 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     margin-top: 80px;
-    font-size: 24px;
 }
 
 #hours-bg {
@@ -95,7 +94,8 @@ input, textarea {
     color: #FFFFFF;
 }
 
-#hours-form input {
+#hours-form input,
+#hours-form textarea {
     background-color: rgba(0, 0, 0, 0);
 }
 

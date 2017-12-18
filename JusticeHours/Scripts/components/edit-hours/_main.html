@@ -3,27 +3,33 @@
         <!-- Hours Form -->
         <div id="hours-bg">
             <form id="hours-form" name="hoursForm">
-                <div class="form-row row">
+                <div class="form-row">
                     <div class="form-group col-2">
+                        <label for="week">Week</label>
                         <input type="number" name="week" id="week" placeholder="Week" ng-model="$ctrl.form.Week">
                     </div>
                     <div class="form-group col-4">
+                        <label for="date">Date</label>
                         <input type="text" name="date" id="date" placeholder="Date" ng-model="$ctrl.form.Date">
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row form-inline">
                     <div class="form-group col">
+                        <label for="direct">Direct</label>
                         <input type="number" name="direct" id="direct" placeholder="Direct" ng-model="$ctrl.form.DirectClientContact">
                     </div>
                     <div class="form-group col">
+                        <label for="indirect">Indirect</label>
                         <input type="number" name="indirect" id="indirect" placeholder="Indirect" ng-model="$ctrl.form.IndirectClientHours">
                     </div>
                     <div class="form-group col">
+                        <label for="supervision">Supervision</label>
                         <input type="number" name="supervision" id="supervision" placeholder="Supervision" ng-model="$ctrl.form.SupervisionHours">
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea name="explanation" id="explanation" placeholder="Explanation of SCE" ng-model="$ctrl.form.ExplanationOfSce" />
+                    <label for="explanation">Explanation of SCE</label>
+                    <textarea name="explanation" id="explanation" placeholder="Explanation of SCE" cols="40" rows="6" ng-model="$ctrl.form.ExplanationOfSce" />
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-3">
@@ -56,7 +62,7 @@
                     <strong>Indirect: </strong>{{ entry.IndirectClientHours }}
                     <strong>Supervision: </strong>{{ entry.SupervisionHours }}
                 </p>
-                <p><strong>Total Hours Worked: </strong>{{ entry.TotalHoursWorked }}</p>
+                <p><strong>Total: </strong>{{ entry.TotalHoursWorked }}</p>
                 <p><strong>Explanation of SCE: </strong>{{ entry.ExplanationOfSce }}</p>
             </div>
         </div>
