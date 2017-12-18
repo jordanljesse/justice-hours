@@ -20,7 +20,8 @@
 
         vm.loginForm = {
             login: null,
-            password: null
+            password: null,
+            confirmPassword: null
         };
 
         vm.registerForm = {
