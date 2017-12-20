@@ -1,17 +1,20 @@
 <div class="row justify-content-center">
     <div class="col-9">
         <!-- Login Form -->
-        <form name="loginForm" ng-show="!$ctrl.registerMode">
+        <form name="loginForm" ng-show="!$ctrl.registerMode" novalidate>
             <div class="row text-center">
                 <div class="col tagline">
                     <p>Track your licensure hours quickly and accurately so you can get some rest :)</p>
                 </div>
             </div>
             <div class="row form-group">
-                <input type="email" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="login" id="login" placeholder="example@email.com" ng-model="$ctrl.loginForm.login" />
+                <input type="email" class="col-md-6 offset-3" name="login" id="login" placeholder="example@email.com" ng-model="$ctrl.loginForm.login" required />
+                <small ng-show="loginForm.login.$invalid && loginForm.login.$dirty">Please enter a valid email.</small>
             </div>
             <div class="row form-group">
-                <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="loginPassword" id="loginPassword" placeholder="password" ng-model="$ctrl.loginForm.password" />
+                <input type="password" class="col-md-6 offset-3" name="loginPassword" id="loginPassword" placeholder="password" ng-model="$ctrl.loginForm.password" ng-minlength="6" ng-pattern="/\d+/" required />
+                <small ng-show="loginForm.loginPassword.$error.minlength">Please enter a password that is at least six characters.</small>
+                <small ng-show="loginForm.loginPassword.$error.pattern">Please enter a password that has at least one number.</small>
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
