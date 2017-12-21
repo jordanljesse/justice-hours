@@ -15,23 +15,23 @@
     function userLoginController() {
         var vm = this;
 
+
         // track when to show registration form
         vm.registerMode = false;
 
         vm.loginForm = {
-            login: null,
-            password: null,
-            confirmPassword: null
+            loginEmail: null,
+            loginPassword: null
         };
 
         vm.registerForm = {
-            fullName: null,
-            userName: null,
-            email: null,
-            password: null
+            registerEmail: null,
+            registerPassword: null,
+            confirmPassword: null
         };
 
         vm.toggleRegister = _toggleRegister;
+
 
         function _toggleRegister() {
             vm.registerMode = !vm.registerMode;
