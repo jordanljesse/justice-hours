@@ -10,13 +10,13 @@
             <!-- Email -->
             <div class="row form-group">
                 <input type="email" class="col-md-4 offset-4" name="loginEmail" id="loginEmail" placeholder="example@email.com" ng-model="$ctrl.loginForm.loginEmail" required />
-                <small ng-show="loginForm.loginEmail.$invalid && loginForm.loginEmail.$dirty">Please enter a valid email.</small>
+                <!--<small ng-show="loginForm.loginEmail.$invalid && loginForm.loginEmail.$dirty">Please enter a valid email.</small>-->
             </div>
             <!-- Password -->
             <div class="row form-group">
                 <input type="password" class="col-md-4 offset-4" name="loginPassword" id="loginPassword" placeholder="password" ng-model="$ctrl.loginForm.password" ng-minlength="6" ng-pattern="/\d+/" required />
-                <small ng-show="loginForm.loginPassword.$error.minlength">Please enter a password that is at least six characters.</small>
-                <small ng-show="loginForm.loginPassword.$error.pattern">Please enter a password that has at least one number.</small>
+                <!--<small ng-show="loginForm.loginPassword.$error.minlength">Please enter a password that is at least six characters.</small>
+                <small ng-show="loginForm.loginPassword.$error.pattern">Please enter a password that has at least one number.</small>-->
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
@@ -38,16 +38,16 @@
             </div>
             <div class="row form-group">
                 <input type="email" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="registerEmail" id="registerEmail" placeholder="example@email.com" ng-model="$ctrl.registerForm.registerEmail" required />
-                <small ng-show="registerForm.registerEmail.$invalid && registerForm.registerEmail.$dirty">Please enter a valid email.</small>
+                <!--<small ng-show="registerForm.registerEmail.$invalid && registerForm.registerEmail.$dirty">Please enter a valid email.</small>-->
             </div>
             <div class="row form-group">
                 <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="registerPassword" id="registerPassword" placeholder="password" ng-model="$ctrl.registerForm.password" ng-minlength="6" ng-pattern="/\d+/" required />
-                <small ng-show="registerForm.registerPassword.$error.minlength">Please enter a password with at least six characters.</small>
-                <small ng-show="registerform.registerPassword.$error.pattern">Please enter a password with at least one number.</small>
+                <!--<small ng-show="registerForm.registerPassword.$error.minlength">Please enter a password with at least six characters.</small>
+                <small ng-show="registerform.registerPassword.$error.pattern">Please enter a password with at least one number.</small>-->
             </div>
             <div class="row form-group">
                 <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="confirmPassword" id="confirmPassword" placeholder="confirm password" ng-model="$ctrl.loginForm.confirmPassword" required />
-                <small ng-show="">Passwords must match.</small> <!-- Finish This -->
+                <!--<small ng-show="">Passwords must match.</small>--> <!-- Finish This -->
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">

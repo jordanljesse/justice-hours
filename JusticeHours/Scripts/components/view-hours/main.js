@@ -29,7 +29,7 @@
 
         function _getHours() {
             hoursService.getAllEntries()
-                .then(_complete, error => console.error(error));
+				.then(_complete, error => console.error(error));
 
             function _complete(response) {
                 vm.table = response.data;
@@ -59,8 +59,8 @@
                 },
                 data: {
                     content: [
-                        { label: 'Direct', value: vm.hours.direct },
-                        { label: 'Indirect', value: vm.hours.indirect }
+						{ label: 'Direct', value: vm.hours.direct },
+						{ label: 'Indirect', value: vm.hours.indirect }
                     ]
                 },
                 callbacks: {

@@ -8,6 +8,8 @@ body {
 .tagline {
     margin: 160px 0px 40px;
     font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    letter-spacing: 0.5px;
 }
 
 a:hover {
@@ -154,7 +156,12 @@ li.active {
         }
 
 
-/***** Hours Entry Edit Display *****/
+/***** Edit Hours Entry Display *****/
+.entries {
+    height: 760px;
+    overflow: auto;
+}
+
 .entry {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;

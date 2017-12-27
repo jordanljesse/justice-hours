@@ -44,8 +44,8 @@
         </div>
     </div>
     <!-- Display Hours Entries -->
-    <div class="col-4">
-        <div ng-repeat="entry in $ctrl.hoursArray">
+    <div class="col-4 entries">
+        <div ng-repeat="entry in $ctrl.hoursArray | orderBy:'-Id'">
             <div class="entry" ng-click="$ctrl.editEntry(entry)">
                 <button type="submit" class="btn-delete" ng-click="$ctrl.deleteEntry(entry.Id, $event)">X</button>
                 <p><span>Week: {{ entry.Week }}</span><span>Date: {{ entry.Date }}</span></p>
