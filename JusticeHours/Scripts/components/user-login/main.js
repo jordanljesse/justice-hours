@@ -2,34 +2,31 @@
     'use strict';
 
     angular.module(APPNAME)
-		.component('userLogin', {
-		    templateUrl: '../Scripts/components/user-login/_main.html',
-		    controller: 'userLoginController'
-		});
+        .component('userLogin', {
+            templateUrl: '../Scripts/components/user-login/_main.html',
+            controller: 'userLoginController'
+        });
 
     angular.module(APPNAME)
-		.controller('userLoginController', userLoginController);
+        .controller('userLoginController', userLoginController);
 
     userLoginController.$inject = [];
+
 
     function userLoginController() {
         var vm = this;
 
 
-        // track when to show registration form
-        vm.registerMode = false;
-
         vm.loginForm = {
             loginEmail: null,
             loginPassword: null
         };
-
         vm.registerForm = {
             registerEmail: null,
             registerPassword: null,
             confirmPassword: null
         };
-
+        vm.registerMode = false;
         vm.toggleRegister = _toggleRegister;
 
 

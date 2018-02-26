@@ -155,6 +155,10 @@ li.active {
             outline-color: #00A752;
         }
 
+.form-group {
+    margin-bottom: 0px;
+    margin-top: 1rem;
+}
 
 /***** Edit Hours Entry Display *****/
 .entries {

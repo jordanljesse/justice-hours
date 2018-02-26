@@ -7,16 +7,34 @@
                     <p>Track your licensure hours quickly and accurately so you can get some rest :)</p>
                 </div>
             </div>
-            <!-- Email -->
             <div class="row form-group">
-                <input type="email" class="col-md-4 offset-4" name="loginEmail" id="loginEmail" placeholder="example@email.com" ng-model="$ctrl.loginForm.loginEmail" required />
-                <!--<small ng-show="loginForm.loginEmail.$invalid && loginForm.loginEmail.$dirty">Please enter a valid email.</small>-->
+                <input type="email"
+                       class="col-md-4 offset-4"
+                       name="loginEmail"
+                       id="loginEmail"
+                       placeholder="example@email.com"
+                       ng-model="$ctrl.loginForm.loginEmail"
+                       required />
             </div>
-            <!-- Password -->
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="loginForm.loginEmail.$invalid && loginForm.loginEmail.$dirty">Please enter a valid email.</small>
+            </div>
             <div class="row form-group">
-                <input type="password" class="col-md-4 offset-4" name="loginPassword" id="loginPassword" placeholder="password" ng-model="$ctrl.loginForm.password" ng-minlength="6" ng-pattern="/\d+/" required />
-                <!--<small ng-show="loginForm.loginPassword.$error.minlength">Please enter a password that is at least six characters.</small>
-                <small ng-show="loginForm.loginPassword.$error.pattern">Please enter a password that has at least one number.</small>-->
+                <input type="password"
+                       class="col-md-4 offset-4"
+                       name="loginPassword"
+                       id="loginPassword"
+                       placeholder="password"
+                       ng-model="$ctrl.loginForm.loginPassword"
+                       ng-minlength="6"
+                       ng-pattern="/\d+/"
+                       required />
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="loginForm.loginPassword.$error.pattern">Password must contain at least one number.</small>
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="loginForm.loginPassword.$error.minlength">Password must contain at least six characters.</small>
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
@@ -37,17 +55,45 @@
                 </div>
             </div>
             <div class="row form-group">
-                <input type="email" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="registerEmail" id="registerEmail" placeholder="example@email.com" ng-model="$ctrl.registerForm.registerEmail" required />
-                <!--<small ng-show="registerForm.registerEmail.$invalid && registerForm.registerEmail.$dirty">Please enter a valid email.</small>-->
+                <input type="email"
+                       class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto"
+                       name="registerEmail"
+                       id="registerEmail"
+                       placeholder="example@email.com"
+                       ng-model="$ctrl.registerForm.registerEmail"
+                       required />
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="registerForm.registerEmail.$invalid && registerForm.registerEmail.$dirty">Please enter a valid email.</small>
             </div>
             <div class="row form-group">
-                <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="registerPassword" id="registerPassword" placeholder="password" ng-model="$ctrl.registerForm.password" ng-minlength="6" ng-pattern="/\d+/" required />
-                <!--<small ng-show="registerForm.registerPassword.$error.minlength">Please enter a password with at least six characters.</small>
-                <small ng-show="registerform.registerPassword.$error.pattern">Please enter a password with at least one number.</small>-->
+                <input type="password"
+                       class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto"
+                       name="registerPassword"
+                       id="registerPassword"
+                       placeholder="password"
+                       ng-model="$ctrl.registerForm.registerPassword"
+                       ng-minlength="6"
+                       ng-pattern="/\d+/"
+                       required />
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="registerForm.registerPassword.$error.pattern">Password must contain at least one number.</small>
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="registerForm.registerPassword.$error.minlength">Password must contain at least six characters.</small>
             </div>
             <div class="row form-group">
-                <input type="password" class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto" name="confirmPassword" id="confirmPassword" placeholder="confirm password" ng-model="$ctrl.loginForm.confirmPassword" required />
-                <!--<small ng-show="">Passwords must match.</small>--> <!-- Finish This -->
+                <input type="password"
+                       class="col-xl-4 col-lg-5 col-md-6 ml-auto mr-auto"
+                       name="confirmPassword"
+                       id="confirmPassword"
+                       placeholder="confirm password"
+                       ng-model="$ctrl.registerForm.confirmPassword"
+                       required />
+            </div>
+            <div class="row">
+                <small class="col-md-4 offset-4" ng-show="$ctrl.registerForm.registerPassword != $ctrl.registerForm.confirmPassword">Passwords must match.</small><!-- TODO: complete this -->
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col-3">
